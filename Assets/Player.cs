@@ -11,12 +11,22 @@ public class Player : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        Debug.Log(horizontal);
-        Debug.Log(vertical);
+        float speed = 3f;
+        Vector3 target = transform.position + new Vector3(horizontal, vertical);
+        transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
+
+        if (horizontal > 0)
+        {
+            transform.localScale = new Vector3(1, 1);
+        }
+        if (horizontal < 0)
+        {
+            transform.localScale = new Vector3(-1, 1);
+        }
     }
 }
