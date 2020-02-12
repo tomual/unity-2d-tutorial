@@ -1,16 +1,36 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
+    GameObject ball;
+    int health = 5;
+    Text healthText;
+    
     void Start()
     {
-        
+        ball = GameObject.Find("Ball");
+        ball.SetActive(false);
+
+        healthText = GameObject.Find("HealthText").GetComponent<Text>();
+        healthText.text = "Health :" + health;
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Vector3 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+            Vector3 direction = target - transform.position;
+            var clone = Instantiate(ball, transform.position, transform.rotation);
+            clone.SetActive(true);
+            clone.GetComponent<Rigidbody2D>().AddForce(direction * 100);
+        }
+    }
+
     void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
@@ -29,4 +49,19 @@ public class Player : MonoBehaviour
             transform.localScale = new Vector3(-1, 1);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.name.Contains("Enemy"))
+        {
+            health = health - 1;
+            healthText.text = "Health :" + health;
+            if (health <= 0)
+            {
+                SceneManager.LoadScene("SampleScene");
+            }
+        }
+    }
 }
+
+
