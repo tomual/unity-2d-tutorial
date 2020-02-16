@@ -1,4 +1,4 @@
-﻿# Little Bot
+# Little Bot
 
 ## Starting the Project
 
@@ -13,6 +13,9 @@
 ### Creating the Background
  1. Assets > Import New Asset …
  2. Find saved background image, click “Import”
+ 
+ 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_oPlHUT3mci.png)
 
 Hierarchy Area > Right Click > 2D Object > Sprite
 
@@ -20,6 +23,10 @@ Inspector Area > Click on the **New Sprite** GameObject
 1.  Rename to `Background`
 2.  On the **Sprite** field, click on the circle with the dot in the middle
 3.  Double click on the image for the background
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_BX5A33jskv.png)
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/explorer_IYTaHmJlB9.png)
     
 ### Creating the Player
  1. Assets > Import New Asset …
@@ -46,15 +53,19 @@ Assets Area > Create > C# Script
 Name the script `Player`
 Double click the file to open it in a text editor
 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_1R8YhUSIId.png)
+
 There are two empty functions already prepared:
 `Start()` Is automatically called by Unity when the script is loaded
 `Update()` is automatically called by Unity once per frame - this means about 30 times a second or more, which is a lot!
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_pNddNwyCXn.png)
 
 To make the Playermove, the script should read in what horizontal or vertical controls the player presses.
 This can be read in by using `Input.GetAxis()`.
 `Input.GetAxis()` reads in either the WASD keys, or a controller’s joystick button.
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/0bfJ0kgd8f.gif)
 
 We will store `Input.GetAxis()` values in two variables, `horizontal` and `vertical`.
 
@@ -62,8 +73,6 @@ Inside the `Update()` function- inside the curly brackets `{}`, type in these tw
 
     float horizontal = Input.GetAxis("Horizontal");
     float vertical = Input.GetAxis("Vertical");
-    
-![enter image description here](test)
 
 To find out what these variables will have in them during the game, we'll print them out in the Unity console.
 After the two lines we wrote above, write in these two lines:
@@ -73,7 +82,7 @@ After the two lines we wrote above, write in these two lines:
 
 The code should now look like this:
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_Hs71UrRGHF.png)
 
 This means every frame (~30 times a second), it will read in the horizontal and vertical inputs, and print them out.
 
@@ -86,18 +95,24 @@ Inspector Area > Click the **Add Component** button
 In the search bar that comes up, type `Player` to find our Player Script, and click it
 You will see a **Player (Script)** component has been added.
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_G0b0IPH3hV.png)
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_Ty3DxedJda.png)
 
 Now we can start the game that we have so far
 To *start* the game, click on the **Play** button at the top
 To *stop* the game, click on the **Play** button at the top again
 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_oucbABwnmW.png)
+
 Start the game. You will see the **Game** tab.
 In the bottom area is the **Console**, where you should see a lot of `0`s being printed out. This is from the `Debug.Log()` messages, and it's printing out a `0` for every frame because we're not pressing the movement keys.
 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_CA6MDuvThl.png)
+
 Try pressing any of the `W`, `A`, `S` or `D` keys on the keyboard, and you will see the numbers that print change.
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_rfNkW6QMDl.png)
   
 Stop the game.
 
@@ -133,8 +148,6 @@ Now apply the speed to the movement by editing our `MoveTowards()` line:
 Save the script, go back to Unity, and restart the game.
 The robot should now be faster when you move.
 
-![enter image description here](test)
-
 You’ll notice that even when you walk to the right, the robot still faces to the left.
 To make the robot turn when walking right, we’ll use `Scale`.
 
@@ -155,7 +168,8 @@ If the horizontal input is less than `0`, it means the player is moving left and
 Save the script, go back to Unity, and restart the game.
 The robot will now change directions when he needs to.
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_xn2rIHtL2X.png)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_Rl9MTJX9ON.png)
 
 ### Making the Player Stay Within the Walls
 
@@ -169,15 +183,19 @@ To add the Collider component to the robot:
 Hierarchy Area > Click on the **Player** GameObject
 Inspector Area > **Add Component** button > Search for and click “Box Collider 2D”.
 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_sjGLraHKBQ.png)
+
 Make sure it’s **Box Collider 2D**, and not **Box Collider**.
 
 Once it’s added, click on the button next to **Edit Collider**.
 
 Change the size of the collider in the scene window so that it’s about the same size as the robot picture.
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_q5X7aQF0US.png)
 
 If the camera icon is covering the robot, you can click the **Gizmo** button at the top to hide the icon.
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_jhp7immxyD.png)
 
 Now that we have a collider on the robot, we’ll need colliders to act as walls on our board.
 Hierarchy Area > Click on the **Background** GameObject
@@ -187,12 +205,12 @@ Once it’s added, click on the button next to **Edit Collider**.
 
 Change the size of the collider in the scene window so that it’s about the same size as the top black wall.
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_n78ZaxOF96.png)
 
 Repeat this three more times to make four walls.
-
-![enter image description here](test)
   
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_U0tXnfuEud.png)
+
 **Colliders** need another component called **RigidBody2D** in order to work correctly.
 
 Click on the **Player** GameObject
@@ -202,10 +220,10 @@ On the component settings:
 Set **Gravity Scale** to `0`, because we don’t want gravity in our game.
 Under **Constraints**, check the **Freeze Rotation** box because we don’t want our Robot falling over.
 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_kPQKtVlrX0.png)
+
 Save the Scene, and restart the game
 The robot will no longer be able to go through walls.
-
-![enter image description here](test)
 
 ### Creating the Enemy
 
@@ -222,7 +240,7 @@ Inspector Area:
  5. **Add Component** > **Box Collider 2D**
  6. **Edit Collider** to adjust the collider box to fit the enemy image in the scene
  
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_XfUF9xa1Xh.png)
 
 ### Moving the Enemy
 
@@ -230,10 +248,12 @@ We’ll get the enemy to follow the Player next, again using programming in a Sc
 1. Project Area > Right Click > Create > **C# Script**
 2. Name the new script `Enemy`
 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_XfUF9xa1Xh.png)
+
 To attach the script to the Enemy GameObject:
 Hierarchy > Click **Enemy** > Inspector > **Add Component** > Search `Enemy` and click it
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/chrome_sw5Ymd9907.png)
 
 The Enemy GameObject should now have the script attached.
 
@@ -245,6 +265,8 @@ We want the Enemy to see where the Player is, and move towards it.
 At the top of the Enemy class, create a player variable with a GameObject type:
 
     GameObject player;
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_uC0NaH92K6.png)
 
 In the `Start()` function, we’ll get Unity to find the Player object and store it in the Enemy’s player variable.
 
@@ -260,8 +282,6 @@ Save the script, go back to Unity, and restart the game.
 
 When the Player moves, the Enemy will follow.
 
-![enter image description here](test)
-
 ### Throwing Balls
   
 Now we’ll get the Playerto throw balls at the enemy if you left click on the mouse.
@@ -275,9 +295,12 @@ Inspector Area of the new GameObject:
 4. Select **Knob** - it’s a circle that we’ll use as the ball
 5. Set **Order in Layer** to `5` so that it appears at the front
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_J0PPfEJvRH.png)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/ShareX_KKgCTkfVl3.png)
 
 You can change the color of the ball by clicking on the **Color** field and picking a color inside the wheel and the square.
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_OnZUmh7ogL.png)
 
 Now to make the Player throw the ball:
 Open the Player script
@@ -309,7 +332,11 @@ With those in mind, we can create a copy of the Ball GameObject, and then activa
     var clone = Instantiate(ball, transform.position, transform.rotation);
     clone.SetActive(true);
 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_wG0C4VZCAc.png)
+
 Now go back to the game,  restart it, and click while moving.
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/dspTUdC5kB.gif)
 
 The ball doesn’t move yet - but the game does create copies of the ball where the Player is when you click! 
 
@@ -327,10 +354,10 @@ Under the code we wrote before, we’ll put in the code to give the Ball a push 
 
 Your script should now look like this
 
-![enter image description here](test)
-
 Save the script and restart the game.
 Now when you click, it should throw the ball in the direction you clicked.
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/3HHslh5AiH.gif)
 
 ### Enemy Taking Damage
 
@@ -350,6 +377,8 @@ When something first collides with the Enemy, we’ll print out the name of what
 
 Save, go back to the game, and throw Balls at the Enemy.
 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_0EowyiSn0X.gif)
+
 You should see two kinds of messages, one that prints out **Ball (Clone)** when the Ball hits the Enemy, and **Player** if the Player touches the Enemy.
 
 Inside the `OnTriggerEnter2D()` function, make sure the collision is with the Ball.
@@ -365,11 +394,11 @@ Inside this check, we’ll **Destroy** both the Ball and the Enemy when they col
     Destroy(collision.gameObject);
     Destroy(gameObject);
 
-![enter image description here](test)
-
 Save the script, go back to the game, and Play. 
 Walk away from the Enemy a bit, and then throw a Ball at the Enemy. 
 Both the Ball and the Enemy should disappear.
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/CiVBZUHIf7.gif)
 
 The game might be too easy like this, so we’ll make the enemies die after 3 hits.
 
@@ -383,14 +412,14 @@ Now inside the OnTrigger function that we have, every time it collides with the 
 
 After that if the health is 0 or below, it should Destroy the Enemy:
 
-    if (health >= 0)
+    if (health <= 0)
     {
     	Destroy(gameObject);
     }
 
 Your code should now look like this:
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_6v2J03QHIh.png)
 
 Save the script and restart the game. 
 Now it should take 3 throws for the enemy to disappear.
@@ -427,6 +456,9 @@ Now back in the collision script after we subtract a health on hit, put in a che
     {
     	SceneManager.LoadScene("SampleScene");
     }
+    
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_hhhLL0EInv.png)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_X9OyJkehfR.png)
 
 Now we have health data in the code, but we want to show the Player what their health is in the game. We’ll show some text on the screen for this.
 
@@ -436,6 +468,8 @@ This creates a few objects in the Scene, including one named **Canvas** and **Te
 
 Try *double-clicking* on the **Canvas** GameObject- it will zoom way out, very far away from your game, and show a rectangle.
 Now try double-clicking on the **Player** GameObject - it will zoom all the way in.
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Y6xyH2foGM.gif)
 
 You might think it’s weird how the Canvas is so big, but don’t worry - it’s just how Unity does UI (User Interface - things like Text and Buttons). It will all end up looking normal in the end.
 
@@ -449,7 +483,7 @@ Hierarchy Area > Click on the Text GameObject
 This will pop up some **Anchor Presets**.
 We want the text to appear in the bottom left, so hold the **Alt** key, and click on the Anchor Preset that would set it to the bottom right:
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/s98FSXJtEf.gif)
 
 Save the Scene and start the game.
 The text for “Health:” should now be showing in the bottom left.
@@ -478,7 +512,8 @@ Now each time we subtract the Player’s health, we want to update the text agai
     healthText.text = "Health :" + health;
     
 Your code should now look like this:
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_JquyCorYdY.png)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/devenv_IICMw2CYBm.png)
 
 ## Lots of Enemies
 
@@ -487,6 +522,8 @@ At the moment the Enemy starts in the same place as the Player, which isn’t ve
 Move the **Enemy** GameObject to the top left of the board.
 
 Now when you Play the game, the Enemy should move towards the Player, and each time the Enemy touches the Player, the Player should lose 1 health. When the health reaches 0, it should reload the Scene and start again.
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/0bfJ0kgd8f.png)
 
 We’re nearly there!
 
@@ -498,13 +535,12 @@ This will create a copy of the Enemy.
 You can move it around where you wish on or off the board.
 
 To make the game more difficult over time, you can put lots of enemies far away, like so:
-![enter image description here](test)
+
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/qIVvc5uIky.gif)
 
 Last Step!
 
 In the Hierarchy Area, you’ll see the Enemy copies have numbers on the end of their names.
-
-![enter image description here](test)
 
 This is an issue because the Player script only checks for the name “Enemy”, and not something like “Enemy(2)”.
 
@@ -520,6 +556,8 @@ To:
 
 Now the game is complete!
 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/qIVvc5uIky.gif)
+
 ## Building the Game Program
 
 Now to make it so that you can put the game on a USB or on the internet, we’ll need to **Build** the game.
@@ -533,7 +571,7 @@ All game start in full screen, so we’ll set it to windowed mode.
 5. Set **Default Screen Height** to `800`
 6. Tick the box for **Resizable Window**
 
-![enter image description here](test)
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/Unity_FX8Qg8t1OH.png)
 
 Close Player Settings by clicking the `x` at the top of that window
 
@@ -545,6 +583,7 @@ When it finishes building, it should automatically open the folder that it built
 
 Inside the folder that you built in, double click on the game, little-bot.exe
 
+![](https://github.com/tomual/little-bot/blob/master/tutorial/images/PWMQKpPsdE.gif)
 
 
 
