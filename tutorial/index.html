@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="featherlight.css">
+    <title>Unity Tutorial</title>
+</head>
+
+<body>
+    <article class="markdown-body entry-content p-3 p-md-6" itemprop="text">
+        <h1><a id="user-content-little-bot" class="anchor" aria-hidden="true" href="#little-bot"></a>Little Bot</h1>
+
+
+        <h2><a id="user-content-starting-the-project" class="anchor" aria-hidden="true" href="#starting-the-project"></a>Starting the Project</h2>
+        <ol>
+            <li>Open Unity Hub</li>
+            <li>Click the <b>NEW</b> button</li>
+            <li>Select the 2D template box</li>
+            <li>Name the project "little-robot"</li>
+            <li>Click <b>CREATE</b></li>
+        </ol>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/chrome_KhEA15Zys3.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/chrome_KhEA15Zys3.png"></a></p>
+
+        <p>It will open a Unity window after loading the new project.</p>
+        <p>Here are the names we will be using for the Unity Editor windows:</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_ER7smuu4sD.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_ER7smuu4sD.png"></a></p>
+
+
+        <h2><a id="user-content-creating-the-background" class="anchor" aria-hidden="true"></a>Getting the Images</h2>
+        <p>We'll need to save the images for the background, robot and enemy.</p>
+        <ol>
+            <li>Click this link to open an image in a new tab: <a href="https://github.com/tomual/little-bot/raw/master/tutorial/images/background.png" target="_blank">Click here</a></li>
+            <li>Right Click the image > Save As ...</li>
+            <li>Save the image to your Desktop</li>
+        </ol>
+        <ol>
+            <li>Click this link to open an image in a new tab: <a href="https://github.com/tomual/little-bot/raw/master/tutorial/images/robot.png" target="_blank">Click here</a></li>
+            <li>Right Click the image > Save As ...</li>
+            <li>Save the image to your Desktop</li>
+        </ol>
+        <ol>
+            <li>Click this link to open an image in a new tab: <a href="https://github.com/tomual/little-bot/raw/master/tutorial/images/enemy.png" target="_blank">Click here</a></li>
+            <li>Right Click the image > Save As ...</li>
+            <li>Save the image to your Desktop</li>
+        </ol>
+
+
+        <h2><a id="user-content-creating-the-background" class="anchor" aria-hidden="true"></a>Creating the Background</h2>
+        <p>Go to the Unity window where you created your project.</p>
+        <ol>
+            <li>Assets &gt; Import New Asset …</li>
+            <li>Find saved background image, click “Import”</li>
+        </ol>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_2JblExBBnh.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_2JblExBBnh.png"></a></p>
+        <p>Hierarchy Area &gt; Right Click &gt; 2D Object &gt; Sprite</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_BX5A33jskv.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_BX5A33jskv.png"></a></p>
+        <p>Inspector Area of the <b>New Sprite</b> GameObject:</p>
+        <ol>
+            <li>Rename to <code>Background</code></li>
+            <li>On the <strong>Sprite</strong> field, click on the circle with the dot in the middle</li>
+            <li>Double click on the image for the background</li>
+        </ol>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/explorer_IYTaHmJlB9.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/explorer_IYTaHmJlB9.png"></a></p>
+
+
+        <h2><a id="user-content-creating-the-player" class="anchor" aria-hidden="true" href="#creating-the-player"></a>Creating the Player</h2>
+        <ol>
+            <li>Assets &gt; Import New Asset …</li>
+            <li>Find the saved robot image, and click “Import”</li>
+        </ol>
+
+        <p>Hierarchy Area &gt; Right Click &gt; 2D Object &gt; Sprite</p>
+        <p>Inspector Area of the <b>New Sprite</b> GameObject:</p>
+        <ol>
+            <li>Rename to <code>Player</code></li>
+            <li>On the Sprite field, click on the circle with the dot in the middle</li>
+            <li>Double click on the image for the robot</li>
+        </ol>
+        <p>The robot may appear behind the background.
+            In the Inspector Area for the <strong>Player</strong> GameObject, set the <strong>Order in Layer</strong> to
+            1.
+        </p>
+        <p>It’s also a good habit to make sure everything is positioned at 0, 0, 0 to begin with - for both the
+            GameObjects
+            <strong>Player</strong> and <strong>Background</strong>, go to their <strong>Transform</strong> component in
+            the
+            Inspector Area and click the three dots at the top &gt; Reset.</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_PXPp3TReyT.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_PXPp3TReyT.png"></a></p>
+        <p>It's important to regularly save your scene. <br>Save the Scene by pressing Ctrl + S.</p>
+
+        <h2><a id="user-content-moving-the-player" class="anchor" aria-hidden="true" href="#moving-the-player"></a>Moving the Player</h2>
+        <p>To move the Player, we'll need to do some programming! <br>
+            We will be making a script and checking for button presses.</p>
+        <p>Assets Area &gt; Create &gt; C# Script<br>
+            Name the script <code>Player</code><br>
+            Double click the file to open it in a text editor</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_1R8YhUSIId.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_1R8YhUSIId.png"></a></p>
+        <p>There are two empty functions already prepared:<br>
+            <code>Start()</code> Is automatically called by Unity when the script is loaded<br>
+            <code>Update()</code> is automatically called by Unity once per frame - this means about 30 times a second
+            or
+            more, which is a lot!</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_pNddNwyCXn.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_pNddNwyCXn.png"></a></p>
+        <p>To make the Player move, the script should read in what horizontal or vertical controls the player presses.<br>
+            This can be read in by using <code>Input.GetAxis()</code>.<br>
+            <code>Input.GetAxis()</code> reads in either the WASD keys, or a game controller’s joystick.</p>
+        <p>We will store <code>Input.GetAxis()</code> values in two variables, <code>horizontal</code> and<br>
+            <code>vertical</code>.</p>
+        <p>Inside the <code>Update()</code> function- inside the curly brackets <code>{}</code>, type in these two
+            lines:
+        </p>
+        <pre><code>
+    float horizontal = Input.GetAxis("Horizontal");
+    float vertical = Input.GetAxis("Vertical");
+    </code></pre>
+        <p>To find out what these variables will have in them during the game, we'll print them out in the Unity
+            console.<br>
+            After the two lines we wrote above, write in these two lines:</p>
+        <pre><code>
+    Debug.Log(horizontal);
+    Debug.Log(vertical);
+    </code></pre>
+        <p>The code should now look like this:</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_Hs71UrRGHF.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_Hs71UrRGHF.png"></a></p>
+        <p>This means every frame (~30 times a second), it will read in the horizontal and vertical inputs, and print
+            them
+            out.</p>
+        <p>Save the Script and go back to Unity.</p>
+        <p>We’ll now need to attach the Player Script to the robot, because the robot is what we want to move.</p>
+        <p>Hierarchy Area &gt; Click the <strong>Player</strong> GameObject<br>
+            Inspector Area &gt; Click the <strong>Add Component</strong> button<br>
+            In the search bar that comes up, type <code>Player</code> to find our Player Script, and click it<br>
+            You will see a <strong>Player (Script)</strong> component has been added.</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_Ty3DxedJda.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_Ty3DxedJda.png"></a></p>
+        <p>Now we can start the game that we have so far.<br>
+            To <em>start</em> the game, click on the <strong>Play</strong> button at the top<br>
+            To <em>stop</em> the game, click on the <strong>Play</strong> button at the top again</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_oucbABwnmW.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_oucbABwnmW.png"></a></p>
+        <p>Start the game. You will see the <strong>Game</strong> tab.<br>
+            Near the Project Area is the <strong>Console</strong> tab. Click the Console tab.<br>
+            You should see a lot of <code>0</code>s being
+            printed
+            out. This is from the <code>Debug.Log()</code> messages, and it's printing out a <code>0</code> for every
+            frame
+            because we're not pressing the movement keys.</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_CA6MDuvThl.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_CA6MDuvThl.png"></a></p>
+        <p>Click the Game Area once, and try pressing any of the <code>W</code>, <code>A</code>, <code>S</code> or <code>D</code> keys on the
+            keyboard,
+            and you will see the numbers that print change.<br>
+            You will see different numbers to the screenshot.<br>
+            When you stop pressing buttons, it will go back to printing lots of 0s.</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_rfNkW6QMDl.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_rfNkW6QMDl.png"></a></p>
+        <p>Stop the game.</p>
+        <p>To make the robot move with these values, we’ll use some <code>Vector3</code> code.</p>
+        <p>Open the <strong>Player</strong> Script again.<br>
+            Remove the two <code>Debug.Log()</code> lines.<br>
+            To get the current position of the Player, we will use <code>transform.position</code>.<br>
+            To get the target position for the Player, we will us addition, adding our current position with the
+            direction
+            the player presses.</p>
+        <p>Under where we set the <code>horizontal</code> and <code>vertical</code> variables, set the current target:
+        </p>
+        <pre><code>
+    Vector3 target = transform.position + new Vector3(horizontal, vertical);
+    </code></pre>
+        <p>We will then move the Player's position by using <code>MoveTowards()</code> below that line.</p>
+        <pre><code>
+    transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime);
+    </code></pre>
+        <p>Save the script, go back to Unity, and start the game.</p>
+        <p>The robot should now move when you press one of the <code>W</code>, <code>A</code>, <code>S</code> or
+            <code>D</code> keys on the keyboard.</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Orvaly1A8d.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Orvaly1A8d.gif"></a></p>
+        <p>He’s a bit slow though, so we can speed him up by multiplying the last value by our desired speed:</p>
+        <p>Above where we called <code>MoveTowards()</code>, set a <code>speed</code> variable:</p>
+        <pre><code>
+    float speed = 3f;
+    </code></pre>
+        <p>Now apply the speed to the movement by editing our <code>MoveTowards()</code> line:</p>
+        <pre><code>
+    transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime * speed);
+    </code></pre>
+        <p>Save the script, go back to Unity, and restart the game.<br>
+            The robot should now be faster when you move.</p>
+        <p>You’ll notice that even when you walk to the right, the robot still faces to the left.<br>
+            To make the robot turn when walking right, we’ll use <code>Scale</code>.</p>
+        <p>If the horizontal input is more than <code>0</code>, it means the player is moving right and it should keep
+            facing right.<br>
+            If the horizontal input is less than <code>0</code>, it means the player is moving left and it should flip
+            the
+            robot.</p>
+        <p>To do this, write this under the MoveTowards line:</p>
+        <pre><code>
+    if (horizontal &gt; 0)
+    {
+    	transform.localScale = new Vector3(1, 1);
+    }
+    
+    if (horizontal &lt; 0)
+    {
+        transform.localScale = new Vector3(-1, 1);
+    }
+    </code></pre>
+        <p>Save the script, go back to Unity, and restart the game.<br>
+            The robot will now change directions when he needs to.</p>
+        <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_xn2rIHtL2X.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_xn2rIHtL2X.png"></a>
+
+
+            <h2><a id="user-content-making-the-player-stay-within-the-walls" class="anchor" aria-hidden="true"></a>Making the Player Stay Within the Walls</h2>
+            <p>It’s great that the robot can move, but right now the player is able to move him off the board.<br>
+                We want him to stay in the square.<br>
+                To do this, we will use <strong>Colliders</strong>.</p>
+            <p>Colliders are very useful in being walls, as well as detecting if things like enemies are near us or have hit
+                us.
+            </p>
+            <p>To add the Collider component to the robot:<br>
+                Hierarchy Area &gt; Click on the <strong>Player</strong> GameObject<br>
+                Inspector Area &gt; <strong>Add Component</strong> button &gt; Search for and click “Box Collider 2D”.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_sjGLraHKBQ.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_sjGLraHKBQ.png"></a></p>
+            <p>Make sure it’s <strong>Box Collider 2D</strong>, and not <strong>Box Collider</strong>.</p>
+            <p>Once it’s added, click on the button next to <strong>Edit Collider</strong>.</p>
+            <p>Change the size of the collider in the scene window so that it’s about the same size as the robot picture.<br>
+                You may need to zoom in closer to the robot by using the mouse scroll to zoom in the Scene Area.
+            </p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_q5X7aQF0US.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_q5X7aQF0US.png"></a></p>
+            <p>If the camera icon is covering the robot, you can click the <strong>Gizmo</strong> button at the top to hide
+                the
+                icon.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_jhp7immxyD.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_jhp7immxyD.png"></a></p>
+            <p>Now that we have a collider on the robot, we’ll need colliders to act as walls on our board.<br>
+                Hierarchy Area &gt; Click on the <strong>Background</strong> GameObject<br>
+                Inspector Area &gt; <strong>Add Component</strong> button &gt; Search for and click “Box Collider 2D”.<br>
+                Once it’s added, click on the button next to <strong>Edit Collider</strong>.</p>
+            <p>You may have to scroll out in the scene area again to zoom out to see the walls.</p>
+            <p>Change the size of the collider in the scene window so that it’s about the same size as the top black wall.
+            </p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_n78ZaxOF96.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_n78ZaxOF96.png"></a></p>
+            <p>Repeat this three more times to make four walls - don't worry if the colliders don't look perfect.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_U0tXnfuEud.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_U0tXnfuEud.png"></a></p>
+            <p><strong>Colliders</strong> need another component called <strong>RigidBody2D</strong> in order to act like a proper wall.
+            </p>
+            <p>Click on the <strong>Player</strong> GameObject
+                <strong>Add Component</strong> &gt; <strong>Rigidbody2D</strong></p>
+            <p>On the component settings:<br>
+                Set <strong>Gravity Scale</strong> to <code>0</code>, because we don’t want gravity in our game.<br>
+                Under <strong>Constraints</strong>, check the <strong>Freeze Rotation</strong> box because we don’t want our<br>
+                Robot falling over.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_kPQKtVlrX0.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_kPQKtVlrX0.png"></a></p>
+            <p>Save the Scene, and restart the game
+                The robot will no longer be able to go through walls.</p>
+
+
+            <h2><a id="user-content-creating-the-enemy" class="anchor" aria-hidden="true" href="#creating-the-enemy"></a>Creating the Enemy</h2>
+            <p>Now that we have our Player movement set up, we’ll introduce some enemies.<br>
+                Assets &gt; <strong>Import New Asset …</strong> &gt; Find the enemy image that you
+                saved<br>
+                Hierarchy Area &gt; Right Click &gt; 2D Object &gt; Sprite</p>
+            <p>Inspector Area of the New Sprite:</p>
+            <ol>
+                <li>Rename to <code>Enemy</code></li>
+                <li>Click on the three dots on the <strong>Transform</strong> component &gt; <strong>Reset</strong></li>
+                <li>Click the circle next to <strong>None (Sprite)</strong>, and select the enemy image</li>
+                <li>Set <b>Order in Layer</b> to <code>1</code> to make it appear in front of the Background</li>
+                <li>Tick the <b>Is Trigger</b> box because we want the Enemy to go through the Player</li>
+                <li><strong>Add Component</strong> &gt; <strong>Box Collider 2D</strong></li>
+                <li><strong>Edit Collider</strong> to adjust the collider box to fit the enemy image in the scene</li>
+            </ol>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_XfUF9xa1Xh.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_XfUF9xa1Xh.png"></a></p>
+
+
+            <h2><a id="user-content-moving-the-enemy" class="anchor" aria-hidden="true" href="#moving-the-enemy"></a>Moving
+                the Enemy</h2>
+            <p>We’ll get the enemy to follow the Player next, again using programming in a Script.</p>
+            <ol>
+                <li>Project Area &gt; Right Click &gt; Create &gt; <strong>C# Script</strong></li>
+                <li>Name the new script <code>Enemy</code></li>
+            </ol>
+            <p>To attach the script to the Enemy GameObject:<br>
+                Hierarchy &gt; Click <strong>Enemy</strong> &gt; Inspector &gt; <strong>Add Component</strong> &gt; Search
+                <code>Enemy</code> and click it</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/chrome_sw5Ymd9907.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/chrome_sw5Ymd9907.png"></a></p>
+            <p>The Enemy GameObject should now have the script attached.</p>
+            <p>Open the Enemy script by double clicking it.</p>
+            <p>The movement code for the Enemy will be very similar to the Player's.<br>
+                We want the Enemy to see where the Player is, and move towards it.</p>
+            <p>At the top of the Enemy class, create a player variable with a GameObject type:</p>
+            <pre><code>
+    GameObject player;
+    </code></pre>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_uC0NaH92K6.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_uC0NaH92K6.png"></a></p>
+            <p>In the <code>Start()</code> function, we’ll get Unity to find the Player object and store it in the Enemy’s
+                player variable.</p>
+            <pre><code>
+    player = GameObject.Find("Player");
+    </code></pre>
+            <p>Now in the <code>Update()</code> function, we’ll set the target to the player’s position,
+                and then set the Enemy’s position to move towards the target.</p>
+            <pre><code>
+    Vector3 target = player.transform.position;
+    transform.position = Vector3.MoveTowards(transform.position, target, Time.deltaTime);
+    </code></pre>
+            <p>Save the script, go back to Unity, and restart the game.</p>
+            <p>When the Player moves, the Enemy will follow.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/TgyPx9Kp7b.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/TgyPx9Kp7b.gif"></a></p>
+
+            <h2><a id="user-content-throwing-balls" class="anchor" aria-hidden="true" href="#throwing-balls"></a>Throwing
+                Balls</h2>
+            <p>Now we’ll get the Player to throw balls at the enemy when you left click on the Enemy.<br>
+                To do this, we’ll make a ball, and each time the Player throws, we’ll make a copy of the ball and throw it
+                towards where the Player clicked.</p>
+            <p>Hierarchy Area &gt; Right Click &gt; 2D Object &gt; <strong>Sprite</strong>
+                Inspector Area of the new GameObject:</p>
+            <ol>
+                <li>Rename to <code>Ball</code></li>
+                <li><strong>Transform</strong> component’s three dots at the top &gt; <strong>Reset</strong></li>
+                <li>Click the circle on the right of <strong>Sprite</strong></li>
+                <li>Select <strong>Knob</strong> - it’s a circle that we’ll use as the ball</li>
+                <li>Set <strong>Order in Layer</strong> to <code>5</code> so that it appears at the front</li>
+            </ol>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/chrome_9xJxwGIdbP.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/chrome_9xJxwGIdbP.png"></a></p>
+
+            <p>You can change the color of the ball by clicking on the <strong>Color</strong> field and picking a color
+                inside
+                the wheel and the square.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_OnZUmh7ogL.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_OnZUmh7ogL.png"></a></p>
+            <p>Now to make the Player throw the ball:<br>
+                Open the Player script<br>
+                Prepare to store the Ball GameObject by declaring the ball at the top of the Player class</p>
+            <pre><code>
+    GameObject ball;
+    </code></pre>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_kp7ClkZhiH.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_kp7ClkZhiH.png"></a></p>
+
+            <p>When the script starts in the <code>Start()</code> function, locate the Ball GameObject and store it. We also
+                want to deactivate the copy of the ball so it doesn’t appear on the board.</p>
+            <pre><code>
+    ball = GameObject.Find("Ball");
+    ball.SetActive(false);
+    </code></pre>
+            <p>At the end inside the <code>Update()</code> method, put in a check to see if the mouse has been clicked</p>
+            <pre><code>
+    if (Input.GetMouseButtonDown(0))
+    {
+    }
+    </code></pre>
+            <p>For the ball-throwing, we’re going to need to know the location of the click (the mouse cursor position)<br>
+                Put this inside the above's brackets:</p>
+            <pre><code>
+    Vector3 throwTarget = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
+    </code></pre>
+            <p>Then we need to know the direction we’re going to throw the ball, which is the difference between the
+                location of
+                the Player and the location of the click.</p>
+            <pre><code>
+    Vector3 direction = throwTarget - transform.position;
+    </code></pre>
+            <p>With those in mind, we can create a copy of the Ball GameObject, and then activate it again</p>
+            <pre><code>
+    var clone = Instantiate(ball, transform.position, transform.rotation);
+    clone.SetActive(true);
+    </code></pre>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_iNd6VPd4Jy.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_iNd6VPd4Jy.png"></a></p>
+            <p>Now go back to the game, restart it, and click while moving.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/dspTUdC5kB.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/dspTUdC5kB.gif"></a></p>
+            <p>The ball doesn’t move yet - but the game does create copies of the ball where the Player is when you click!
+            </p>
+            <p>To give the Ball a push so it looks like it’s throwing, we’ll need to add a <strong>Rigidbody2D</strong> to
+                the
+                Ball.</p>
+            <p>Hierarchy Area &gt; Click <strong>Ball</strong><br>
+                Inspector Area &gt; <strong>Add New Component</strong> &gt; <strong>RigidBody 2D</strong><br>
+                Set <strong>Gravity Scale</strong> to <code>0</code></p>
+            <p>Go to the Player Script.</p>
+            <p>Under the code we wrote before, we’ll put in the code to give the Ball a push using the RigidBody2D on the
+                ball. <br>
+                Write this line under <code>clone.SetActive(true);</code> :
+            </p>
+            <pre><code>
+    clone.GetComponent&lt;Rigidbody2D&gt;().AddForce(direction * 100);
+    </code></pre>
+            <p>Your script should now look like this</p>
+            <p>Save the script and restart the game.<br>
+                Now when you click, it should throw the ball in the direction you clicked.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/3HHslh5AiH.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/3HHslh5AiH.gif"></a></p>
+
+
+            <h2><a id="user-content-enemy-taking-damage" class="anchor" aria-hidden="true" href="#enemy-taking-damage"></a>Enemy Taking Damage</h2>
+            <p>Now we want the Enemy to take damage if the Ball hits it.<br>
+                We already added a collider to the Enemy, but we are yet to do that for the Ball.<br>
+                Make sure the Game not in Playing mode when making scene edits.</p>
+            <p>Hierarchy Area &gt; Click the <strong>Ball</strong> GameObject &gt; <strong>Add Component</strong> &gt;
+                <strong>Box Collider 2D</strong><br>
+                Check the <strong>Is Trigger</strong> box since we don’t want the ball bouncing off the Enemy.</p>
+            <p>Open the Enemy script<br>
+                To detect if there's been a collision, we will use a special Unity function called <code>OnTriggerEnter2D</code>.<br>
+                This function is called every time two objects with a collider touches each other.<br>
+                Inside <code>OnTriggerEnter2D</code> we’ll print out the name of what collided.<br>
+                Put this function below and outside the <code>Update()</code> function:</p>
+            <pre><code>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+    	Debug.Log(collision.name);
+    }
+    </code></pre>
+            <p>Save the script and go back to the game.<br>
+                Play the game, and switch to the <b>Console</b> tab in the Project Area.
+            </p>
+            <p>You should see two kinds of messages, one that prints out <strong>Ball (Clone)</strong> when the Ball hits
+                the
+                Enemy, and <strong>Player</strong> if the Player touches the Enemy.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_J61O8derju.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_J61O8derju.png"></a></p>
+
+            <p>Now we will make the Enemy and Ball disappear when they touch each other. <br>
+                Inside the <code>OnTriggerEnter2D()</code> function, make sure the collision is with the Ball.</p>
+            <pre><code>
+    Debug.Log(collision.name);
+    if (collision.name == "Ball(Clone)")
+    {
+    
+    }
+    </code></pre>
+            <p>Inside this check, we’ll <strong>Destroy</strong> both the Ball and the Enemy when they collide.</p>
+            <pre><code>
+    Destroy(collision.gameObject);
+    Destroy(gameObject);
+    </code></pre>
+            <p>Save the script, go back to the game, and Play.<br>
+                Walk away from the Enemy a bit, and then throw a Ball at the Enemy.<br>
+                Both the Ball and the Enemy should disappear.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/CiVBZUHIf7.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/CiVBZUHIf7.gif"></a></p>
+            <p>The game might be too easy if the Enemy disappears in 1 hit, so we’ll make the enemies die after 3 hits.</p>
+            <p>To do this, open the Enemy script. <br>
+                Declare a health value at the top of the <code>Enemy</code> class, below where we have <code>GameObject player;</code>:</p>
+
+            <pre><code>
+    int health = 3;
+    </code></pre>
+            <p>Now inside the OnTrigger function, every time it collides with the ball, it should subtract 1
+                from
+                Enemy’s health</p>
+            <pre><code>
+    health = health - 1;
+    </code></pre>
+            <p>After that if the health is 0 or below, it should Destroy the Enemy:</p>
+            <pre><code>
+    if (health &lt;= 0)
+    {
+    	Destroy(gameObject);
+    }
+    </code></pre>
+            <p>Your code should now look like this:</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_6v2J03QHIh.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_6v2J03QHIh.png"></a></p>
+            <p>Save the script and restart the game.<br>
+                Now it should take 3 throws for the enemy to disappear.</p>
+
+
+            <h2><a id="user-content-player-taking-damage" class="anchor" aria-hidden="true" href="#player-taking-damage"></a>Player Taking Damage</h2>
+            <p>Now that the enemy has health and collision with the ball, we should do that for the Player too.<br>
+                The Player should have health, and take damage when the Enemy touches the Player.</p>
+            <p>Open the Player script and set the health at the top of the Player class, below where we have <code>GameObject ball;</code></p>
+            <pre><code>
+    int health = 5;
+    </code></pre>
+            <p>Similar to the Enemy and the Ball, add a <code>OnTriggerEnter2D()</code> function to the Player script.<br>
+                The Script should check if the collided object is an Enemy.<br>
+                After the <code>Update()</code> function, add this <code>OnTriggerEnter2D</code> function:</p>
+            <pre><code>
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+    	if (collision.name == "Enemy")
+    	{
+    		health = health - 1;
+    	}
+    }
+    </code></pre>
+            <p>When the Player loses all health, we’ll restart the game. To do this, we’ll use Unity’s
+                <strong>SceneManager</strong> to reset the Scene.</p>
+            <p>To tell Unity that we want to use SceneManager, put this at the very top of our Player script, above the line <code>public class Player : MonoBehaviour</code>:</p>
+            <pre><code>
+    using UnityEngine.SceneManagement;
+    </code></pre>
+            <p>Now back in the collision script after we subtract a health on hit, put in a check for 0 health and reload
+                the
+                scene</p>
+            <pre><code>
+    if (health &lt;= 0)
+    {
+    	SceneManager.LoadScene("SampleScene");
+    }
+    </code></pre>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_hhhLL0EInv.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_hhhLL0EInv.png"></a>
+                <a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_X9OyJkehfR.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_X9OyJkehfR.png"></a></p>
+            <p>Now we have health data in the code, but we want to show the Player what their health is in the game. We’ll
+                show
+                some text on the screen for this.</p>
+            <p>Hierarchy Area &gt; Right Click &gt; UI &gt; <strong>Text</strong></p>
+            <p>This creates a few objects in the Scene, including one named <strong>Canvas</strong> and
+                <strong>Text</strong>.
+            </p>
+            <p>Click on the </p>
+            <p>Try <em>double-clicking</em> on the <strong>Canvas</strong> GameObject- it will zoom way out, very far away
+                from
+                your game, and show a rectangle.<br>
+                Now try double-clicking on the <strong>Player</strong> GameObject - it will zoom all the way in.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Y6xyH2foGM.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Y6xyH2foGM.gif"></a></p>
+            <p>You might think it’s weird how the Canvas is so big, but don’t worry - it’s just how Unity does UI (User
+                Interface - things like Text and Buttons). It will all end up looking normal in the end.</p>
+            <p>Now we’ll change the Text:<br>
+                Hierarchy Area &gt; Double-Click on the Text GameObject to zoom out to see the text</p>
+            <ol>
+                <li>Inspector Area: Name the Object “HealthText”</li>
+                <li>Set the <strong>Text</strong> to “Health:”</li>
+                <li>Set the <strong>Font Size</strong> to 24</li>
+                <li>Change <strong>Color</strong> to white</li>
+                <li>In the <strong>RectTransform</strong> component at the top of the Inspector Area, click on the grid with red and black lines.<br>
+                    This will pop up some <strong>Anchor Presets</strong>.<br>
+                    We want the text to appear in the bottom left, so hold the <strong>Alt</strong> key, and click on the
+                    Anchor
+                    Preset that would set it to the bottom right - don't worry if your text looks like it doesn't move.</li>
+            </ol>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/s98FSXJtEf.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/s98FSXJtEf.gif"></a></p>
+            <p>Save the Scene and start the game.<br>
+                The text for “Health:” should now be showing in the bottom left.<br>
+                Stop the game.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_IVgvHdgYFx.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_IVgvHdgYFx.png"></a></p>
+
+            <p>Now we will make the Player script tell the health text what number it should show.<br>
+                In the Player script, let Unity know we want to use the UI code at the very top, below <code>using UnityEngine.SceneManagement;</code>:</p>
+            <pre><code>
+    using UnityEngine.UI;
+    </code></pre>
+            <p>At the top of the Player class, add a variable for Text for our health text below <code>int health = 5;</code>.</p>
+            <pre><code>
+    Text healthText;
+    </code></pre>
+            <p>Now in the Start function we want to put the HealthText into this variable.<br>
+                Do this by finding the HealthText GameObject, and getting the <strong>Text</strong> component from it. Place it under <code>ball.SetActive(false);</code></p>
+            <pre><code>
+    healthText = GameObject.Find("HealthText").GetComponent&lt;Text&gt;();
+    </code></pre>
+            <p>Right after that, we’ll set the text to the current health:</p>
+            <pre><code>
+    healthText.text = "Health :" + health;
+    </code></pre>
+            <p>Now each time we subtract the Player’s health, we want to update the text again:<br>
+                Put this code inside <code>OnTriggerEnter2D</code> under <code>health = health - 1;</code>
+            </p>
+            <pre><code>
+    healthText.text = "Health :" + health;
+    </code></pre>
+            <p>Your code should now look like this:</p>
+            <a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_JquyCorYdY.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_JquyCorYdY.png"></a>
+            <a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_IICMw2CYBm.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/devenv_IICMw2CYBm.png"></a>
+
+
+            <h2><a id="user-content-lots-of-enemies" class="anchor" aria-hidden="true" href="#lots-of-enemies"></a>Lots of
+                Enemies</h2>
+            <p>Good job making it this far, we’re nearly there!</p>
+
+            <p>At the moment the Enemy starts in the same place as the Player, which isn’t very fair because it makes the
+                Player
+                take damage at the beginning of the game!</p>
+            <p>Move the <strong>Enemy</strong> GameObject to the top left of the board.</p>
+            <p>To make it easier to move the object in the Scene, set the mode to <b>Rect Tool</b> by clicking the icon for it at the very top:</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_Pkox46M93k.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_Pkox46M93k.png"></a></p>
+
+            <p>Now when you Play the game, the Enemy should move towards the Player, and each time the Enemy touches the
+                Player,
+                the Player should lose 1 health. When the health reaches 0, it should reload the Scene and start again.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/0bfJ0kgd8f.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/0bfJ0kgd8f.gif"></a></p>
+            <p>Now to make the game more difficult, let’s add lots of enemies. We’ll do this by copying and pasting the
+                Enemy
+                object.</p>
+            <p>In the Scene Area, click on the Enemy and copy it by pressing <b>Ctrl + C</b>.<br>
+                Paste the copied enemy by pressing <b>Ctrl + V</b>.<br>
+                This will create a copy of the Enemy.<br>
+                You can move it around where you wish on or off the board.</p>
+            <p>To make the game more difficult over time, you can put lots of enemies far away, like so:</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/qIVvc5uIky.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/qIVvc5uIky.gif"></a></p>
+            <p>Last Step!</p>
+            <p>In the Hierarchy Area, you’ll see the Enemy copies have numbers on the end of their names.</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_DQexKWasKf.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_DQexKWasKf.png"></a></p>
+            <p>This is an issue because inside the Player script,<br>
+                our <code>OnTriggerEnter2D</code> only checks for the word “Enemy”, and not something like “Enemy(2)”.
+            </p>
+
+            <p>We can get fix this by editing the Player script so that the trigger script checks for colliders with
+                names
+                that have the word “Enemy” in it, instead of just “Enemy”.</p>
+            <p>In the Player Script where the name check is made, change</p>
+            <pre><code>
+    if (collision.name == "Enemy")
+    </code></pre>
+            <p>To:</p>
+            <pre><code>
+    if (collision.name.Contains("Enemy"))
+    </code></pre>
+            <p>Now the game is complete!</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/qIVvc5uIky.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/qIVvc5uIky.gif"></a></p>
+
+
+            <h2><a id="user-content-building-the-game-program" class="anchor" aria-hidden="true"></a>Building the Game
+                Program</h2>
+            <p>Now to make it so that you can put the game on a USB or on the internet, we’ll need to <strong>Build</strong>
+                the
+                game.</p>
+            <p>All game start in full screen, so we’ll set it to windowed mode.</p>
+            <ol>
+                <li>File &gt; Build Settings … &gt; Player Settings button &gt;</li>
+                <li>Expand <strong>Resolution and Presentation</strong> section by clicking on the triangle next to it</li>
+                <li>Set <strong>Fullscreen Mode</strong> to <code>Windowed</code></li>
+                <li>Set <strong>Default Screen Width</strong> to <code>800</code></li>
+                <li>Set <strong>Default Screen Height</strong> to <code>800</code></li>
+                <li>Tick the box for <strong>Resizable Window</strong></li>
+            </ol>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_FX8Qg8t1OH.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_FX8Qg8t1OH.png"></a></p>
+            <p>Close Player Settings by clicking the <code>x</code> at the top of that window</p>
+            <p>Back in the Build Settings window, click on the <strong>Build</strong> button.</p>
+            <p>It will pop up a file explorer window - go to the Desktop and create a new folder called <code>game</code>.
+                Click
+                on the folder to select it, and click Select.</p>
+            <p>When it finishes building, it should automatically open the folder that it built to.</p>
+            <p>Inside the folder that you built in, double click on the game, little-bot.exe</p>
+            <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/PWMQKpPsdE.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/PWMQKpPsdE.gif"></a></p>
+    </article>
+    <script src="https://code.jquery.com/jquery-latest.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script
+</body>
+
+</html>
