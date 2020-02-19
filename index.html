@@ -255,7 +255,7 @@
                 Under <strong>Constraints</strong>, check the <strong>Freeze Rotation</strong> box because we don’t want our<br>
                 Robot falling over.</p>
             <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_kPQKtVlrX0.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_kPQKtVlrX0.png"></a></p>
-            <p>Save the Scene, and restart the game
+            <p>Save the Scene, and restart the game.<br>
                 The robot will no longer be able to go through walls.</p>
 
 
@@ -402,7 +402,7 @@
                 Check the <strong>Is Trigger</strong> box since we don’t want the ball bouncing off the Enemy.</p>
             <p>Open the Enemy script<br>
                 To detect if there's been a collision, we will use a special Unity function called <code>OnTriggerEnter2D</code>.<br>
-                This function is called every time two objects with a collider touches each other.<br>
+                This function is called every time two objects with a collider touch each other.<br>
                 Inside <code>OnTriggerEnter2D</code> we’ll print out the name of what collided.<br>
                 Put this function below and outside the <code>Update()</code> function:</p>
             <pre><code>
@@ -428,7 +428,9 @@
     
     }
     </code></pre>
-            <p>Inside this check, we’ll <strong>Destroy</strong> both the Ball and the Enemy when they collide.</p>
+            <p>Inside this check, we’ll <strong>Destroy</strong> both the Ball and the Enemy when they collide. <br>
+            We can do this by destroying the GameObject of the collided object,<br>
+        and then destroying ourselves (as the Enemy script) by destroying our own GameObject.</p>
             <pre><code>
     Destroy(collision.gameObject);
     Destroy(gameObject);
@@ -482,7 +484,8 @@
     	}
     }
     </code></pre>
-            <p>When the Player loses all health, we’ll restart the game. To do this, we’ll use Unity’s
+            <p>When the Player loses all health, we’ll restart the game. <br>
+                To do this, we’ll use Unity’s
                 <strong>SceneManager</strong> to reset the Scene.</p>
             <p>To tell Unity that we want to use SceneManager, put this at the very top of our Player script, above the line <code>public class Player : MonoBehaviour</code>:</p>
             <pre><code>
@@ -506,7 +509,9 @@
             <p>This creates a few objects in the Scene, including one named <strong>Canvas</strong> and
                 <strong>Text</strong>.
             </p>
-            <p>Click on the </p>
+            <p>To be able to see the outline of the invisible Canvas, click on the <b>Rect Tool</b> at the top of the Unity window:</p>
+            <a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_Pkox46M93k.png"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/Unity_Pkox46M93k.png"></a></p>
+
             <p>Try <em>double-clicking</em> on the <strong>Canvas</strong> GameObject- it will zoom way out, very far away
                 from
                 your game, and show a rectangle.<br>
@@ -580,8 +585,8 @@
             <p>Now to make the game more difficult, let’s add lots of enemies. We’ll do this by copying and pasting the
                 Enemy
                 object.</p>
-            <p>In the Scene Area, click on the Enemy and copy it by pressing <b>Ctrl + C</b>.<br>
-                Paste the copied enemy by pressing <b>Ctrl + V</b>.<br>
+            <p>In the Scene Area, click on the Enemy and copy it by pressing <b>Ctrl</b> and <b>C</b> at the same time on the keyboard.<br>
+                Paste the copied enemy by pressing <b>Ctrl</b> and <b>V</b>.<br>
                 This will create a copy of the Enemy.<br>
                 You can move it around where you wish on or off the board.</p>
             <p>To make the game more difficult over time, you can put lots of enemies far away, like so:</p>
@@ -629,11 +634,11 @@
                 Click
                 on the folder to select it, and click Select.</p>
             <p>When it finishes building, it should automatically open the folder that it built to.</p>
-            <p>Inside the folder that you built in, double click on the game, little-bot.exe</p>
+            <p>Inside the folder that you built in, double click on the game, little-robot.exe</p>
             <p><a data-featherlight="image" href="https://github.com/tomual/little-bot/raw/master/tutorial/images/PWMQKpPsdE.gif"><img src="https://github.com/tomual/little-bot/raw/master/tutorial/images/PWMQKpPsdE.gif"></a></p>
     </article>
     <script src="https://code.jquery.com/jquery-latest.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script
+    <script src="https://cdn.jsdelivr.net/npm/featherlight@1.7.14/release/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 </body>
 
 </html>
